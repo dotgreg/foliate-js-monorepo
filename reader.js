@@ -236,7 +236,8 @@ class Reader {
 }
 
 const open = async file => {
-    document.body.removeChild($('#drop-target'))
+    // document.body.removeChild($('#drop-target'))
+    $('#drop-target').innerHtml = ''
     const reader = new Reader()
     globalThis.reader = reader
     await reader.open(file)
