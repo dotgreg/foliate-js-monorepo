@@ -2,6 +2,16 @@ import * as CFI from './epubcfi.js'
 import { TOCProgress, SectionProgress } from './progress.js'
 import { Overlayer } from './overlayer.js'
 import { textWalker } from './text-walker.js'
+// await import('./paginator.js')
+    // const { configure, ZipReader, BlobReader, TextWriter, BlobWriter } =        await import('./vendor/zip.js')
+        // const { EPUB } = await import('./epub.js')
+        // const { searchMatcher } = await import('./search.js')
+import "./paginator.js"
+import { EPUB } from './epub.js'
+import { searchMatcher } from './search.js'
+import { TTS } from './tts.js'
+import { configure, ZipReader, BlobReader, TextWriter, BlobWriter } from './vendor/zip.js'
+
 
 const SEARCH_PREFIX = 'foliate-search:'
 
@@ -28,8 +38,6 @@ const isFBZ = ({ name, type }) =>
     || name.endsWith('.fb2.zip') || name.endsWith('.fbz')
 
 const makeZipLoader = async file => {
-    const { configure, ZipReader, BlobReader, TextWriter, BlobWriter } =
-        await import('./vendor/zip.js')
     configure({ useWebWorkers: false })
     const reader = new ZipReader(new BlobReader(file))
     const entries = await reader.getEntries()
@@ -81,42 +89,22 @@ export const makeBook = async file => {
     let book
     if (file.isDirectory) {
         const loader = await makeDirectoryLoader(file)
-        const { EPUB } = await import('./epub.js')
         book = await new EPUB(loader).init()
     }
     else if (!file.size) throw new NotFoundError('File not found')
     else if (await isZip(file)) {
         const loader = await makeZipLoader(file)
         if (isCBZ(file)) {
-            const { makeComicBook } = await import('./comic-book.js')
-            book = makeComicBook(loader, file)
         }
         else if (isFBZ(file)) {
-            const { makeFB2 } = await import('./fb2.js')
-            const { entries } = loader
-            const entry = entries.find(entry => entry.filename.endsWith('.fb2'))
-            const blob = await loader.loadBlob((entry ?? entries[0]).filename)
-            book = await makeFB2(blob)
         }
         else {
-            const { EPUB } = await import('./epub.js')
             book = await new EPUB(loader).init()
         }
     }
     else if (await isPDF(file)) {
-        const { makePDF } = await import('./pdf.js')
-        book = await makePDF(file)
     }
     else {
-        const { isMOBI, MOBI } = await import('./mobi.js')
-        if (await isMOBI(file)) {
-            const fflate = await import('./vendor/fflate.js')
-            book = await new MOBI({ unzlib: fflate.unzlibSync }).open(file)
-        }
-        else if (isFB2(file)) {
-            const { makeFB2 } = await import('./fb2.js')
-            book = await makeFB2(file)
-        }
     }
     if (!book) throw new UnsupportedTypeError('File type not supported')
     return book
@@ -250,10 +238,8 @@ export class View extends HTMLElement {
 
         this.isFixedLayout = this.book.rendition?.layout === 'pre-paginated'
         if (this.isFixedLayout) {
-            await import('./fixed-layout.js')
-            this.renderer = document.createElement('foliate-fxl')
         } else {
-            await import('./paginator.js')
+            console.log(222, this.renderer,"paginator")	
             this.renderer = document.createElement('foliate-paginator')
         }
         this.renderer.setAttribute('exportparts', 'head,foot,filter')
@@ -467,6 +453,8 @@ export class View extends HTMLElement {
         }
     }
     async goToFraction(frac) {
+        window.sectionProgress = this.#sectionProgress
+        console.log(this.#sectionProgress)
         const [index, anchor] = this.#sectionProgress.getSection(frac)
         await this.renderer.goTo({ index, anchor })
         this.history.pushState({ fraction: frac })
@@ -512,9 +500,11 @@ export class View extends HTMLElement {
         await this.renderer.prev(distance)
     }
     async next(distance) {
+
         await this.renderer.next(distance)
     }
     goLeft() {
+
         return this.book.dir === 'rtl' ? this.next() : this.prev()
     }
     goRight() {
@@ -539,7 +529,6 @@ export class View extends HTMLElement {
     }
     async * search(opts) {
         this.clearSearch()
-        const { searchMatcher } = await import('./search.js')
         const { query, index } = opts
         const matcher = searchMatcher(textWalker,
             { defaultLocale: this.language, ...opts })
@@ -579,8 +568,8 @@ export class View extends HTMLElement {
     }
     async initTTS() {
         const doc = this.renderer.getContents()[0].doc
+        console.log(333, doc)
         if (this.tts && this.tts.doc === doc) return
-        const { TTS } = await import('./tts.js')
         this.tts = new TTS(doc, textWalker, range =>
             this.renderer.scrollToAnchor(range, true))
     }

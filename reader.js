@@ -7,7 +7,10 @@ const getCSS = ({ spacing, justify, hyphenate }) => `
     @namespace epub "http://www.idpf.org/2007/ops";
     html {
         color-scheme: light dark;
+        background-color: white;
+        color: black;
     }
+    
     /* https://github.com/whatwg/html/issues/5426 */
     @media (prefers-color-scheme: dark) {
         a:link {
@@ -40,6 +43,7 @@ const getCSS = ({ spacing, justify, hyphenate }) => `
     aside[epub|type~="rearnote"] {
         display: none;
     }
+}
 `
 
 const $ = document.querySelector.bind(document)
@@ -76,6 +80,12 @@ class Reader {
         $('#side-bar').classList.remove('show')
     }
     constructor() {
+        console.log('Reader constructor',this.view,this.view?.renderer)
+
+
+
+        console.log(this.view)
+        window.readerView = this
         $('#side-bar-button').addEventListener('click', () => {
             $('#dimming-overlay').classList.add('show')
             $('#side-bar').classList.add('show')
@@ -90,6 +100,20 @@ class Reader {
                 items: [
                     ['Paginated', 'paginated'],
                     ['Scrolled', 'scrolled'],
+                    ['woop', 'woop'],
+                ],
+                onclick: value => {
+                    this.view?.renderer.setAttribute('flow', value)
+                },
+            },
+            {
+                name: 'woooop',
+                label: 'woooop',
+                type: 'radio',
+                items: [
+                    ['woooop', 'paginated'],
+                    ['woooop', 'scrolled'],
+                    ['woop', 'woop'],
                 ],
                 onclick: value => {
                     this.view?.renderer.setAttribute('flow', value)
@@ -114,15 +138,24 @@ class Reader {
         this.view.renderer.setStyles?.(getCSS(this.style))
         this.view.renderer.next()
 
+
+        this.view.renderer.addEventListener('relocate', e => {
+            console.log('relocate!!!!!!!', e.detail)
+        })
+
         $('#header-bar').style.visibility = 'visible'
         $('#nav-bar').style.visibility = 'visible'
         $('#left-button').addEventListener('click', () => this.view.goLeft())
         $('#right-button').addEventListener('click', () => this.view.goRight())
 
+        
+
         const slider = $('#progress-slider')
         slider.dir = book.dir
-        slider.addEventListener('input', e =>
-            this.view.goToFraction(parseFloat(e.target.value)))
+        slider.addEventListener('input', e => {
+            console.log(123, e.target.value)
+            return this.view.goToFraction(parseFloat(e.target.value))
+        })
         for (const fraction of this.view.getSectionFractions()) {
             const option = document.createElement('option')
             option.value = fraction
