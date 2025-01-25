@@ -39,7 +39,7 @@
 76C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\cmaps\UniJIS-UCS2-HW-V.bcmap133823103551280166 0
 71C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\cmaps\KSCms-UHC-V.bcmap133823103550889648 0
 61C:\Users\g\Desktop\_DEV\foliate-js\node_modules\wildcard\test133823104317311828 1
-39C:\Users\g\Desktop\_DEV\foliate-js\dist133823135314164422 1
+39C:\Users\g\Desktop\_DEV\foliate-js\dist133823147017493138 1
 88C:\Users\g\Desktop\_DEV\foliate-js\node_modules\uri-js\dist\esnext\schemes\mailto.js.map133823104318744630 0
 72C:\Users\g\Desktop\_DEV\foliate-js\node_modules\webpack-cli\package.json133823104317612898 0
 108C:\Users\g\Desktop\_DEV\foliate-js\node_modules\webpack\schemas\plugins\optimize\MinChunkSizePlugin.check.js133823104325842393 0
@@ -164,7 +164,7 @@
 49C:\Users\g\Desktop\_DEV\foliate-js\quote-image.js133822987760343447 0
 123C:\Users\g\Desktop\_DEV\foliate-js\node_modules\ajv-formats\node_modules\ajv\dist\vocabularies\dynamic\recursiveAnchor.d.ts133823104325922845 0
 64C:\Users\g\Desktop\_DEV\foliate-js\node_modules\side-channel-map133823105177088187 1
-44C:\Users\g\Desktop\_DEV\foliate-js\reader.js133823134419635019 0
+44C:\Users\g\Desktop\_DEV\foliate-js\reader.js133823146871560244 0
 62C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\standard_fonts133823103786905367 1
 117C:\Users\g\Desktop\_DEV\foliate-js\node_modules\terser-webpack-plugin\node_modules\ajv\dist\vocabularies\core\id.d.ts133823104324565101 0
 119C:\Users\g\Desktop\_DEV\foliate-js\node_modules\terser-webpack-plugin\node_modules\ajv\lib\compile\validate\defaults.ts133823104323962924 0
@@ -6195,6 +6195,6 @@
 79C:\Users\g\Desktop\_DEV\foliate-js\node_modules\.bin\update-browserslist-db.ps1133823104329987689 0
 64C:\Users\g\Desktop\_DEV\foliate-js\node_modules\.bin\webpack.cmd133823104330007689 0
 64C:\Users\g\Desktop\_DEV\foliate-js\node_modules\.bin\webpack.ps1133823104330007689 0
-58C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js133823135314106782 0
-62C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js.map133823135314164422 0
+58C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js133823147017443149 0
+62C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js.map133823147017483147 0
 51C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.html133823135314106782 0

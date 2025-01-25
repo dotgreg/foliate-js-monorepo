@@ -237,7 +237,11 @@ class Reader {
 
 const open = async file => {
     // document.body.removeChild($('#drop-target'))
-    $('#drop-target').innerHtml = ''
+    // $('#drop-target').innerHtml = ''
+    // find parent of drop-target and remove it
+    const parent = $('#drop-target').parentNode
+    parent.removeChild($('#drop-target'))
+    
     const reader = new Reader()
     globalThis.reader = reader
     await reader.open(file)
@@ -264,4 +268,9 @@ $('#file-button').addEventListener('click', () => $('#file-input').click())
 const params = new URLSearchParams(location.search)
 const url = params.get('url')
 if (url) open(url).catch(e => console.error(e))
+    // window.bookUrlToLoad = "http://127.0.0.1:8080/_books/Les.Origines.Du.Totalitarisme.Eichmann.A.Jerusalem.2021.Hannah.Arendt(1).epub"
+if (window.bookUrlToLoad) {
+    console.log('window.bookUrlToLoad',window.bookUrlToLoad)
+    open(window.bookUrlToLoad).catch(e => console.error(e))
+}
 else dropTarget.style.visibility = 'visible'
