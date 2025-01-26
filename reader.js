@@ -95,20 +95,6 @@ class Reader {
                 items: [
                     ['Paginated', 'paginated'],
                     ['Scrolled', 'scrolled'],
-                    ['woop', 'woop'],
-                ],
-                onclick: value => {
-                    this.view?.renderer.setAttribute('flow', value)
-                },
-            },
-            {
-                name: 'woooop',
-                label: 'woooop',
-                type: 'radio',
-                items: [
-                    ['woooop', 'paginated'],
-                    ['woooop', 'scrolled'],
-                    ['woop', 'woop'],
                 ],
                 onclick: value => {
                     this.view?.renderer.setAttribute('flow', value)
