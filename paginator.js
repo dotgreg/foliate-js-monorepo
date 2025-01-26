@@ -765,34 +765,34 @@ export class Paginator extends HTMLElement {
         return Math.round(this.viewSize / this.size)
     }
     scrollBy(dx, dy) {
-        // const delta = this.#vertical ? dy : dx
-        // const element = this.#container
-        // const { scrollProp } = this
-        // const [offset, a, b] = this.#scrollBounds
-        // const rtl = this.#rtl
-        // const min = rtl ? offset - b : offset - a
-        // const max = rtl ? offset + a : offset + b
-        // element[scrollProp] = Math.max(min, Math.min(max,
-        //     element[scrollProp] + delta))
+        const delta = this.#vertical ? dy : dx
+        const element = this.#container
+        const { scrollProp } = this
+        const [offset, a, b] = this.#scrollBounds
+        const rtl = this.#rtl
+        const min = rtl ? offset - b : offset - a
+        const max = rtl ? offset + a : offset + b
+        element[scrollProp] = Math.max(min, Math.min(max,
+            element[scrollProp] + delta))
     }
     snap(vx, vy) {
-        // const velocity = this.#vertical ? vy : vx
-        // const [offset, a, b] = this.#scrollBounds
-        // const { start, end, pages, size } = this
-        // const min = Math.abs(offset) - a
-        // const max = Math.abs(offset) + b
-        // const d = velocity * (this.#rtl ? -size : size)
-        // const page = Math.floor(
-        //     Math.max(min, Math.min(max, (start + end) / 2
-        //         + (isNaN(d) ? 0 : d))) / size)
+        const velocity = this.#vertical ? vy : vx
+        const [offset, a, b] = this.#scrollBounds
+        const { start, end, pages, size } = this
+        const min = Math.abs(offset) - a
+        const max = Math.abs(offset) + b
+        const d = velocity * (this.#rtl ? -size : size)
+        const page = Math.floor(
+            Math.max(min, Math.min(max, (start + end) / 2
+                + (isNaN(d) ? 0 : d))) / size)
 
-        // this.#scrollToPage(page, 'snap').then(() => {
-        //     const dir = page <= 0 ? -1 : page >= pages - 1 ? 1 : null
-        //     if (dir) return this.#goTo({
-        //         index: this.#adjacentIndex(dir),
-        //         anchor: dir < 0 ? () => 1 : () => 0,
-        //     })
-        // })
+        this.#scrollToPage(page, 'snap').then(() => {
+            const dir = page <= 0 ? -1 : page >= pages - 1 ? 1 : null
+            if (dir) return this.#goTo({
+                index: this.#adjacentIndex(dir),
+                anchor: dir < 0 ? () => 1 : () => 0,
+            })
+        })
     }
     #onTouchStart(e) {
         const touch = e.changedTouches[0]
