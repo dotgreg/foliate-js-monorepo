@@ -108,7 +108,7 @@ export const createTOCView = (toc, onclick) => {
             item.setAttribute('aria-expanded', 'true')
         el.setAttribute('aria-current', 'page')
         el.tabIndex = 0
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        // el.scrollIntoView({ behavior: 'smooth', block: 'center' })
         currentItem = el
     }
 

@@ -16,7 +16,7 @@
 41C:\Users\g\Desktop\_DEV\foliate-js\pdf.js133822987760343447 0
 90C:\Users\g\Desktop\_DEV\foliate-js\node_modules\jest-worker\build\workers\threadChild.d.ts133823104318764741 0
 42C:\Users\g\Desktop\_DEV\foliate-js\dict.js133822987760283408 0
-45C:\Users\g\Desktop\_DEV\foliate-js\ui\tree.js133822987760403437 0
+45C:\Users\g\Desktop\_DEV\foliate-js\ui\tree.js133823798341732923 0
 62C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\pdf.worker.mjs133823103554500265 0
 110C:\Users\g\Desktop\_DEV\foliate-js\node_modules\ajv-formats\node_modules\ajv\dist\compile\validate\dataType.js133823104318425812 0
 115C:\Users\g\Desktop\_DEV\foliate-js\node_modules\webpack\schemas\plugins\container\ModuleFederationPlugin.check.d.ts133823104329046146 0
@@ -39,7 +39,7 @@
 76C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\cmaps\UniJIS-UCS2-HW-V.bcmap133823103551280166 0
 71C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\cmaps\KSCms-UHC-V.bcmap133823103550889648 0
 61C:\Users\g\Desktop\_DEV\foliate-js\node_modules\wildcard\test133823104317311828 1
-39C:\Users\g\Desktop\_DEV\foliate-js\dist133823797520711755 1
+39C:\Users\g\Desktop\_DEV\foliate-js\dist133823798573145111 1
 88C:\Users\g\Desktop\_DEV\foliate-js\node_modules\uri-js\dist\esnext\schemes\mailto.js.map133823104318744630 0
 72C:\Users\g\Desktop\_DEV\foliate-js\node_modules\webpack-cli\package.json133823104317612898 0
 108C:\Users\g\Desktop\_DEV\foliate-js\node_modules\webpack\schemas\plugins\optimize\MinChunkSizePlugin.check.js133823104325842393 0
@@ -164,7 +164,7 @@
 49C:\Users\g\Desktop\_DEV\foliate-js\quote-image.js133822987760343447 0
 123C:\Users\g\Desktop\_DEV\foliate-js\node_modules\ajv-formats\node_modules\ajv\dist\vocabularies\dynamic\recursiveAnchor.d.ts133823104325922845 0
 64C:\Users\g\Desktop\_DEV\foliate-js\node_modules\side-channel-map133823105177088187 1
-44C:\Users\g\Desktop\_DEV\foliate-js\reader.js133823797294240424 0
+44C:\Users\g\Desktop\_DEV\foliate-js\reader.js133823798173312419 0
 62C:\Users\g\Desktop\_DEV\foliate-js\vendor\pdfjs\standard_fonts133823103786905367 1
 117C:\Users\g\Desktop\_DEV\foliate-js\node_modules\terser-webpack-plugin\node_modules\ajv\dist\vocabularies\core\id.d.ts133823104324565101 0
 119C:\Users\g\Desktop\_DEV\foliate-js\node_modules\terser-webpack-plugin\node_modules\ajv\lib\compile\validate\defaults.ts133823104323962924 0
@@ -6195,6 +6195,6 @@
 79C:\Users\g\Desktop\_DEV\foliate-js\node_modules\.bin\update-browserslist-db.ps1133823104329987689 0
 64C:\Users\g\Desktop\_DEV\foliate-js\node_modules\.bin\webpack.cmd133823104330007689 0
 64C:\Users\g\Desktop\_DEV\foliate-js\node_modules\.bin\webpack.ps1133823104330007689 0
-58C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js133823797520341696 0
-62C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js.map133823797520571728 0
+58C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js133823798573115136 0
+62C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.2496a5b2.js.map133823798573145111 0
 51C:\Users\g\Desktop\_DEV\foliate-js\dist\reader.html133823797520571728 0

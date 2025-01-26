@@ -208,7 +208,7 @@ class Reader {
         slider.style.visibility = 'visible'
         slider.value = fraction
         slider.title = `${percent} · ${loc}`
-        // if (tocItem?.href) this.#tocView?.setCurrentHref?.(tocItem.href)
+        if (tocItem?.href) this.#tocView?.setCurrentHref?.(tocItem.href)
     }
 }
 
