@@ -209,7 +209,6 @@ class View {
     #size
     #layout = {}
     constructor({ container, onExpand }) {
-        console.log('paginator View')
         this.container = container
         this.onExpand = onExpand
         this.#iframe.setAttribute('part', 'filter')
@@ -1034,7 +1033,6 @@ export class Paginator extends HTMLElement {
     }
     async #turnPage(dir, distance) {
         if (this.#locked) return
-        console.log('turning page', dir,distance,this.#adjacentIndex(dir))
         this.#locked = true
         const prev = dir === -1
         const shouldGo = await (prev ? this.#scrollPrev(distance) : this.#scrollNext(distance))
@@ -1049,7 +1047,6 @@ export class Paginator extends HTMLElement {
         return this.#turnPage(-1, distance)
     }
     next(distance) {
-        console.log('next',this.#anchor,this)
         return this.#turnPage(1, distance)
     }
     prevSection() {

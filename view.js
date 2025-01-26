@@ -239,7 +239,6 @@ export class View extends HTMLElement {
         this.isFixedLayout = this.book.rendition?.layout === 'pre-paginated'
         if (this.isFixedLayout) {
         } else {
-            console.log(222, this.renderer,"paginator")	
             this.renderer = document.createElement('foliate-paginator')
         }
         this.renderer.setAttribute('exportparts', 'head,foot,filter')
@@ -454,7 +453,6 @@ export class View extends HTMLElement {
     }
     async goToFraction(frac) {
         window.sectionProgress = this.#sectionProgress
-        console.log(this.#sectionProgress)
         const [index, anchor] = this.#sectionProgress.getSection(frac)
         await this.renderer.goTo({ index, anchor })
         this.history.pushState({ fraction: frac })

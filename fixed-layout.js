@@ -304,7 +304,6 @@ export class FixedLayout extends HTMLElement {
         else return this.goToSpread(this.#index - 1, this.rtl ? 'left' : 'right', 'page')
     }
     getContents() {
-        console.log('getContentsfixed')
         return Array.from(this.#root.querySelectorAll('iframe'), frame => ({
             doc: frame.contentDocument,
             // TODO: index, overlayer

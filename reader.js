@@ -80,11 +80,6 @@ class Reader {
         $('#side-bar').classList.remove('show')
     }
     constructor() {
-        console.log('Reader constructor',this.view,this.view?.renderer)
-
-
-
-        console.log(this.view)
         window.readerView = this
         $('#side-bar-button').addEventListener('click', () => {
             $('#dimming-overlay').classList.add('show')
@@ -139,9 +134,6 @@ class Reader {
         this.view.renderer.next()
 
 
-        this.view.renderer.addEventListener('relocate', e => {
-            console.log('relocate!!!!!!!', e.detail)
-        })
 
         $('#header-bar').style.visibility = 'visible'
         $('#nav-bar').style.visibility = 'visible'
@@ -153,7 +145,6 @@ class Reader {
         const slider = $('#progress-slider')
         slider.dir = book.dir
         slider.addEventListener('input', e => {
-            console.log(123, e.target.value)
             return this.view.goToFraction(parseFloat(e.target.value))
         })
         for (const fraction of this.view.getSectionFractions()) {

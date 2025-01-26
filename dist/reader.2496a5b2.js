@@ -673,8 +673,6 @@ class Reader {
         $('#side-bar').classList.remove('show');
     }
     constructor(){
-        console.log('Reader constructor', this.view, this.view?.renderer);
-        console.log(this.view);
         window.readerView = this;
         $('#side-bar-button').addEventListener('click', ()=>{
             $('#dimming-overlay').classList.add('show');
@@ -741,9 +739,6 @@ class Reader {
         const { book } = this.view;
         this.view.renderer.setStyles?.(getCSS(this.style));
         this.view.renderer.next();
-        this.view.renderer.addEventListener('relocate', (e)=>{
-            console.log('relocate!!!!!!!', e.detail);
-        });
         $('#header-bar').style.visibility = 'visible';
         $('#nav-bar').style.visibility = 'visible';
         $('#left-button').addEventListener('click', ()=>this.view.goLeft());
@@ -751,7 +746,6 @@ class Reader {
         const slider = $('#progress-slider');
         slider.dir = book.dir;
         slider.addEventListener('input', (e)=>{
-            console.log(123, e.target.value);
             return this.view.goToFraction(parseFloat(e.target.value));
         });
         for (const fraction of this.view.getSectionFractions()){
@@ -1118,10 +1112,7 @@ class View extends HTMLElement {
         }
         this.isFixedLayout = this.book.rendition?.layout === 'pre-paginated';
         if (this.isFixedLayout) ;
-        else {
-            console.log(222, this.renderer, "paginator");
-            this.renderer = document.createElement('foliate-paginator');
-        }
+        else this.renderer = document.createElement('foliate-paginator');
         this.renderer.setAttribute('exportparts', 'head,foot,filter');
         this.renderer.addEventListener('load', (e)=>this.#onLoad(e.detail));
         this.renderer.addEventListener('relocate', (e)=>this.#onRelocate(e.detail));
@@ -1354,7 +1345,6 @@ class View extends HTMLElement {
     }
     async goToFraction(frac) {
         window.sectionProgress = this.#sectionProgress;
-        console.log(this.#sectionProgress);
         const [index, anchor] = this.#sectionProgress.getSection(frac);
         await this.renderer.goTo({
             index,
@@ -2485,7 +2475,6 @@ class View {
     #size;
     #layout = {};
     constructor({ container, onExpand }){
-        console.log('paginator View');
         this.container = container;
         this.onExpand = onExpand;
         this.#iframe.setAttribute('part', 'filter');
@@ -3330,7 +3319,6 @@ class Paginator extends HTMLElement {
     }
     async #turnPage(dir, distance) {
         if (this.#locked) return;
-        console.log('turning page', dir, distance, this.#adjacentIndex(dir));
         this.#locked = true;
         const prev = dir === -1;
         const shouldGo = await (prev ? this.#scrollPrev(distance) : this.#scrollNext(distance));
@@ -3345,7 +3333,6 @@ class Paginator extends HTMLElement {
         return this.#turnPage(-1, distance);
     }
     next(distance) {
-        console.log('next', this.#anchor, this);
         return this.#turnPage(1, distance);
     }
     prevSection() {
